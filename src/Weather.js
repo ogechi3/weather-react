@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Audio } from "react-loader-spinner";
+import "./Weather.css";
 
 export default function Weather() {
   const [city, setCity] = useState("");
@@ -54,13 +56,25 @@ export default function Weather() {
           <li>Humidity:{weather.humidity}</li>
           <li>Wind:{weather.wind}km/h</li>
           <li>Description:{weather.description}</li>
-          <li>
-            <img src={weather.icon} alt="" />
-          </li>
         </ul>
+        <img src={weather.icon} alt="" />
       </div>
     );
   } else {
-    return form;
+    return (
+      <div className="Lorder">
+        {form}
+        <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="green"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+        ;
+      </div>
+    );
   }
 }
